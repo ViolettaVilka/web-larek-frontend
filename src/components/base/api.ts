@@ -40,3 +40,11 @@ export class Api {
         }).then(this.handleResponse);
     }
 }
+
+export class ShopAPI {
+    async getCatalog(): Promise<{ id: string; title: string }[]> {
+        const response = await fetch(`${process.env.API_ORIGIN}/catalog`);
+        if (!response.ok) throw new Error('Ошибка загрузки каталога');
+        return response.json();
+    }
+}
